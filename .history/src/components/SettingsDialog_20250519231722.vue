@@ -314,6 +314,9 @@ const saveSettings = () => {
     localStorage.setItem("modelConfigs", JSON.stringify(stateStore.modelConfigs));
   }
   
+  // 保存全局API Key
+  stateStore.setApiKey(globalApiKey.value);
+  localStorage.setItem("apiKey", globalApiKey.value);
   
   // 保存聊天设置
   updateChatSettings();

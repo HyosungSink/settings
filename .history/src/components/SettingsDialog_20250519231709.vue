@@ -227,6 +227,7 @@ const selectedModel = ref<ModelConfig | null>(stateStore.currentModel || null);
 const loadingModels = ref(false);
 
 // API 相关状态
+const globalApiKey = ref(stateStore.apiKey || '');
 const modelApiKey = ref('');
 const modelCustomUrl = ref('');
 
@@ -314,6 +315,9 @@ const saveSettings = () => {
     localStorage.setItem("modelConfigs", JSON.stringify(stateStore.modelConfigs));
   }
   
+  // 保存全局API Key
+  stateStore.setApiKey(globalApiKey.value);
+  localStorage.setItem("apiKey", globalApiKey.value);
   
   // 保存聊天设置
   updateChatSettings();
